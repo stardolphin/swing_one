@@ -2,88 +2,90 @@ package com.stardolphin.swing_one;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.Objects;
 
-// https://www.decodejava.com/java-cardlayout.htm
+// https://www.decodejava.com/java-gridbaglayout.htm
 
-
-class A implements ActionListener {
-    private final JPanel parentPanel;
-    private final CardLayout cd;
-
+class A {
 
     A() {
-        JFrame jf = new JFrame("CardLayout Example");
-        cd = new CardLayout();
+        GridBagLayout grid = new GridBagLayout();
+        GridBagConstraints constraints = new GridBagConstraints();
+
+        JFrame jf = new JFrame("GridBagLayout Example");
 
 
-//Creating a main parent panel that will contain two child panels
-        parentPanel = new JPanel();
+        JButton button1 = new JButton("Button1");
+        JButton button2 = new JButton("Button2");
+        JButton button3 = new JButton("Button3");
+        JButton button4 = new JButton("Button4");
+        JButton button5 = new JButton("Button5");
+        JButton button6 = new JButton("Button6");
 
-//Creating two child panels.
-        JPanel childPanel1 = new JPanel();
-        JPanel childPanel2 = new JPanel();
+        //Setting the positioning of the components in JFrame to GridBagLayout
+        jf.setLayout(grid);
 
+        //Padding with horizontal space of 100 pixels around the next added components
+        constraints.ipadx = 100;
 
-        JButton button1 = new JButton("Alphabets");
-        JButton button2 = new JButton("Numbers");
-
-        JButton button3 = new JButton("4");
-        JButton button4 = new JButton("5");
-        JButton button5 = new JButton("6");
-
-//Adding buttons to childPanel1
-        childPanel1.add(button3);
-        childPanel1.add(button4);
-        childPanel1.add(button5);
-
-        JButton button6 = new JButton("A");
-        JButton button7 = new JButton("B");
-        JButton button8 = new JButton("C");
-
-//Adding buttons to childPanel2
-        childPanel2.add(button6);
-        childPanel2.add(button7);
-        childPanel2.add(button8);
+        //Adding the button1 to 0th x-coordinate of 0th column, at WEST
+        constraints.gridx = 0;
+        constraints.gridy = 0;
+        constraints.anchor = GridBagConstraints.WEST;
+        grid.setConstraints(button1, constraints);
 
 
-//Setting the positioning of the components in parentPanel, JPanel(that contains childPanel1 and childPanel2) to CardLayout
-        parentPanel.setLayout(cd);
+        //Adding the button2 to 1st x-coordinate of 0th column, at EAST
+        constraints.gridx = 1;
+        constraints.gridy = 0;
+        constraints.anchor = GridBagConstraints.EAST;
+        constraints.gridwidth = GridBagConstraints.REMAINDER;
+        grid.setConstraints(button2, constraints);
 
-//Adding childPanel1 and childPanel2 to parentPanel
-        parentPanel.add(childPanel1, "Num");
-        parentPanel.add(childPanel2, "Alp");
-
-        button1.addActionListener(this);
-        button2.addActionListener(this);
+        //Padding with vertical space of 50 pixels around the next added buttons
+        constraints.ipady = 50;
 
 
-//Setting container JFrame's layout to FlowLayout.
-        jf.setLayout(new FlowLayout());
+        //Adding button3 to 0th x-coordinate of 1st column, at CENTER
+        constraints.gridx = 0;
+        constraints.gridy = 1;
+        constraints.anchor = GridBagConstraints.CENTER;
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        grid.setConstraints(button3, constraints);
 
-//Adding two buttons to JFrame, these buttons will remain commonly visible to all panels
+
+        //Adding button5 to 0th x-coordinate of 2nd column, at WEST
+        constraints.gridx = 0;
+        constraints.gridy = 2;
+        constraints.fill = GridBagConstraints.NONE;
+        constraints.anchor = GridBagConstraints.WEST;
+        grid.setConstraints(button4, constraints);
+
+
+        //Adding button6 to 1st x-coordinate of 2nd column, at CENTER
+        constraints.gridx = 1;
+        constraints.gridy = 2;
+        constraints.anchor = GridBagConstraints.CENTER;
+        constraints.gridwidth = GridBagConstraints.RELATIVE;
+        grid.setConstraints(button5, constraints);
+
+
+        //Adding button7 to 2nd x-coordinate of 2nd column, at EAST
+        constraints.gridx = 2;
+        constraints.gridy = 2;
+        constraints.anchor = GridBagConstraints.EAST;
+        constraints.gridwidth = GridBagConstraints.REMAINDER;
+        grid.setConstraints(button6, constraints);
+
+
         jf.add(button1);
         jf.add(button2);
+        jf.add(button3);
+        jf.add(button4);
+        jf.add(button5);
+        jf.add(button6);
 
-//Adding JPanel, parentPanel to JFrame
-        jf.add(parentPanel);
 
-        jf.setSize(300, 200);
         jf.setVisible(true);
+        jf.setSize(600, 300);
     }
-
-    @Override
-    public void actionPerformed(ActionEvent ae) {
-        //If "Numbers" button is clicked, open the JPanel with buttons showing numbers.
-        if (Objects.equals(ae.getActionCommand(), "Numbers"))
-            cd.show(parentPanel, "Num");
-
-        //If "Alphabets" button is clicked, open the JPanel with buttons showing alphabets.
-        if (Objects.equals(ae.getActionCommand(), "Alphabets"))
-            cd.show(parentPanel, "Alp");
-    }
-
-
 }
