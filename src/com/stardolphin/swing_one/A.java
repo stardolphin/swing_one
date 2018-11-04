@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Objects;
 
-// https://www.decodejava.com/java-gridlayout.htm
+// https://www.decodejava.com/java-cardlayout.htm
 
 
 class A implements ActionListener {
