@@ -2,7 +2,11 @@ package com.stardolphin.swing_one;
 
 import javax.swing.*;
 import java.awt.*;
-//import java.awt.*;
+
+
+// decodejava tutorial here:
+// https://www.decodejava.com/java-flowlayout.htm
+
 
 public class SwingOne implements Runnable
 {
