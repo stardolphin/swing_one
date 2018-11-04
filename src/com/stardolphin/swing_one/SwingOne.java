@@ -14,20 +14,19 @@ public class SwingOne implements Runnable
     //Event Dispatching Thread is running to create GUI of window application
     public void run()
     {
-        new A();
+        new MainFrame();
     }
 
 }
 
 
-class A
+class MainFrame
 {
 
-    A()
+    MainFrame()
     {
         JFrame frame = new JFrame("SwingOne");
         JLabel label = new JLabel("HELLO WORLD");
-
 
         frame.add(label);
         frame.setSize(210,250);
