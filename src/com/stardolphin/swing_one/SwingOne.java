@@ -5,60 +5,52 @@ import java.awt.*;
 
 
 // decodejava tutorial here:
-// https://www.decodejava.com/java-flowlayout.htm
+// https://www.decodejava.com/java-borderlayout.htm
 
 
-public class SwingOne implements Runnable
-{
+public class SwingOne implements Runnable {
 
-    public static void main(String...ar)
-    {
+    public static void main(String... ar) {
         SwingUtilities.invokeLater(new SwingOne()); //Creating and calling an Event Dispatching Thread
     }
 
     //Event Dispatching Thread is running to create GUI of window application
-    public void run()
-    {
+    public void run() {
         new A();
     }
 
 }
 
 
-class A
-{
-
-    // JLabel label3;
-
-    A()
-    {
-        JFrame jf = new JFrame("FlowLayout Example");
-        jf.setSize(400,150);
-
-        JLabel label1 = new JLabel("Enter your name");
-        JLabel label2 = new JLabel("Enter your city");
+class A {
 
 
-        JTextField field1 = new JTextField(15);
-        JTextField field2 = new JTextField(15);
+    A() {
+        JFrame jf = new JFrame("BorderLayout Example");
+        JPanel jp = new JPanel();
 
-        JButton button1 = new JButton("Clear");
-        JButton button2 = new JButton("Submit");
-        JButton button3 = new JButton("Exit");
+        JButton button1 = new JButton("North");
+        JButton button2 = new JButton("South");
+        JButton button3 = new JButton("East");
+        JButton button4 = new JButton("West");
 
-//Setting the positioning of the components in container.
-        jf.setLayout(new FlowLayout()); // calling the first constructor of FlowLayout class, which
-        // positions each line of components in the center of JFrame
 
-        jf.add(label1);	  		 //Adding the first Jlabel component to JFrame container
-        jf.add(field1);	  		 //Adding the first JTextField component to JFrame container
-        jf.add(label2);	  		 //Adding the second JLabel component to JFrame container
-        jf.add(field2);   		 //Adding the second JTextField component to JFrame container
-        jf.add(button1);   		 //Adding the first JButton component to JFrame container
-        jf.add(button2);   		 //Adding the second JButton component to JFrame container
-        jf.add(button3);   		 //Adding the third JButton component to JFrame container
+        JTextArea textArea = new JTextArea(4, 4);
 
-        jf.setSize(300,200);
+
+//Setting the positioning of the components in container, JPanel, to BorderLayout
+        jp.setLayout(new BorderLayout()); //
+
+        jp.add(button1, BorderLayout.NORTH);    //Adding button1, to the NORTH, top side
+        jp.add(button2, BorderLayout.SOUTH);    //Adding button2, to the SOUTH, bottom side
+        jp.add(button3, BorderLayout.EAST);    //Adding button3, to the EAST, far right side
+        jp.add(button4, BorderLayout.WEST);    //Adding button4, to the North, far left side
+        jp.add(textArea, BorderLayout.CENTER);    //Adding textarea, to the CENTER
+
+
+        jf.add(jp);
+
+        jf.setSize(320, 200);
         jf.setVisible(true);
     }
 
