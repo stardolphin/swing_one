@@ -9,12 +9,9 @@ import java.awt.*;
 class MainFrame {
 
 
-        private final JFrame jf;
-
-
-        MainFrame()
+    MainFrame()
         {
-            jf = new JFrame("GridLayout Example");
+            JFrame jf = new JFrame("GridLayout Example");
 
             JButton button1 = new JButton("1");
             JButton button2 = new JButton("2");
